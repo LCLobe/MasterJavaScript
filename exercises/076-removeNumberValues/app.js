@@ -5,6 +5,12 @@ let obj = {
 };
 function removeNumberValues(obj) {
     // your code here
+    for (key in obj){
+        //if (obj[key]!=NaN){
+        if (typeof (obj[key])==="number"){
+            delete obj[key];
+        }
+    }
     
 }
 
