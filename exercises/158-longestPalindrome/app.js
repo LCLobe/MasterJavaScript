@@ -4,7 +4,7 @@ function findLongestPalindrome(sentence) {
   // sort the list of palindromes by word length
   // return the largest item in the sorted list
 
-  //no point on deviding into words if longest palindrome may have combined words.
+  //LLoredo: no point on deviding into words if longest palindrome may have combined words.
 
   let arrayOfPalindromes =[];
 
@@ -15,14 +15,12 @@ function findLongestPalindrome(sentence) {
   for (beginIndexToEvaluateString =0 ; beginIndexToEvaluateString <sentence.length; beginIndexToEvaluateString++){
     for (endIndexToEvaluateString = beginIndexToEvaluateString; endIndexToEvaluateString <sentence.length; endIndexToEvaluateString++){
       partialString = sentence.slice(beginIndexToEvaluateString, endIndexToEvaluateString);
-      if (isPalindrome(partialString)) arrayOfPalindromes.push(partialString);
+      if (isPalindrome(partialString.toLowerCase())) arrayOfPalindromes.push(partialString);
     }
   }
   
-  //console.log("findLongestPalindrome: ",arrayOfPalindromes );
-  //console.log("findLongestPalindrome: ", findLongestString([arrayOfPalindromes]));
-  let longestPalindrome = findLongestString([arrayOfPalindromes]);
-  //console.log ("findLongestPalindrome: ",longestPalindrome);
+ 
+  let longestPalindrome = findLongestString(arrayOfPalindromes);
   return longestPalindrome;
 
 }
@@ -38,7 +36,7 @@ function reverseString(string) {
 
 function isPalindrome(word) {
   // hint: you can detect palindromes by comparing a string to its reverse
-
+  
   return word === reverseString(word) ? true : false; 
 
 }
@@ -56,34 +54,12 @@ function findLongestString (array){
     }
   }
   
-  console.log("findLongestString-index/length: ",maxFoundLengthIndex, maxFoundLength); // Good until here.
-  console.log("findLongestString-longestString: ",array[maxFoundLengthIndex]);
+  // console.log("findLongestString-index/length: ",maxFoundLengthIndex, maxFoundLength); // Good until here.
+  // console.log("findLongestString-longestString: ",array[maxFoundLengthIndex]);
   return array[maxFoundLengthIndex];
 }
 
-// let output = findLongestString ([
-//   '',          'M',           '',      'y',
-//   '',          ' ',           ' dad ', '',
-//   'd',         'dad',         '',      'a',
-//   '',          'd',           '',      ' ',
-//   '',          'i',           '',      's',
-//   '',          ' ',           ' a ',   '',
-//   'a',         'a racecar a', '',      ' ',
-//   ' racecar ', '',            'r',     'racecar',
-//   '',          'a',           'aceca', '',
-//   'c',         'cec',         '',      'e',
-//   '',          'c',           '',      'a',
-//   '',          'r',           '',      ' ',
-//   '',          'a',           '',      't',
-//   '',          'h',           '',      'l',
-//   '',          'e',           '',      't',
-//   ''
-// ]);
-//let output = reverseString("memola");
-//let output = isPalindrome("madaam");
+//let output = findLongestPalindrome("My dad is a racecar athlete");
+let output = findLongestPalindrome("Madam, i'm adam");
 
-
-let output = findLongestPalindrome("My dad is a racecar athlete");
 console.log(output); // "a racecar a"
-
-//findLongestPalindrome("My dad is a racecar athlete");
